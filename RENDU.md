@@ -12,7 +12,7 @@ GCA_030271835.1 | 0.031129655942524762 |0.002317306485120559 |X|0.00243325287984
 GCA_000013265.1|0.0024370372626886356 |0.30704869735137047 |0.0024332528798458454|X|0.34100822682570797|
 GCA_000005845.2|0.0025674850826432915 |0.4364853581146792|0.0025757914572849924|0.34100822682570797|X|
 
-The Jaccard matrix indicates the proportion of shared kmer between pairs of bacterial genomes, and by extension an idea of how closely related the two bacteria strains are.
+The Jaccard matrix indicates the proportion of shared kmer between pairs of bacterial genomes, and by extension an idea of how closely related the two bacteria strains are. Typically here, we can see that the highest Jaccard index is between the strains GCA_000005845.2 and GCA_000008865.2, meaning they share the most k-mers respect to other bacterial strains.
 
 ## Implementation
 
