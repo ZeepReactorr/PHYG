@@ -4,6 +4,12 @@ from collections import Counter
 import time
 
 def jaccard(fileA, fileB, k):
+    """
+    Computes the Jaccard index between two sequences files.
+    :param list fileA: list of binarized kmer of the first file
+    :param list fileB: list of binarized kmer of the second file
+    :param int k: length of the k-mer
+    """
     str_fileA = [kmer2str(km_bin, k) for km_bin in fileA]
     str_fileB = [kmer2str(km_bin, k) for km_bin in fileB]
     dicokmA, dicokmB = Counter(str_fileA), Counter(str_fileB)
