@@ -17,5 +17,9 @@ The Jaccard matrix indicates the proportion of shared kmer between pairs of bact
 ## Implementation
 
 <p align="justify">
-k-mer are produced using a sliding window large of k nucleotides, with a binary mask masking the first nucleotide and the next nucleotide being directly encoded. The entire k-mer is encoded in binary format, and then translated back to a string of nucleotides. At the same time, the canonical k-mer is determined and if lighter to encode, is kept in place of the one determined previously. Following this step, for both files for which we calculate the Jaccard distance, we make a dictionnary counting each kmer sequence using the `Counter` class from the standard library of Python. Then by leveraging the `set` type of python we compute the Jaccard.
+First of all, a pair of sequence files are loaded. If multiple sequences are found in a file, their k-mer are constructed independently, and then the lists are concatenated. k-mer are generated using a sliding window large of k nucleotides, with a binary mask masking the first nucleotide and the next nucleotide being directly encoded. The entire k-mer is encoded in binary format. Following this, the canonical k-mer is determined as its reverse complement. Only the lighter one to encode is kept in the final k-mer list. Finally, the binarized k-mer list are computed as strings again, then using the properties of the <c>set</c> type in Python, the intersecting and union sets of k-mer are determined, and from there the Jaccard index is computed using the formula :
 </p>
+
+$$
+J = \frac{A \cap B}{A \cup B}
+$$
