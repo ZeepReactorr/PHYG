@@ -1,9 +1,12 @@
 from TP.loading import load_directory
 from TP.kmers import stream_kmers, kmer2str
 from collections import Counter
+import time
 
 def jaccard(fileA, fileB, k):
-    dicokmA, dicokmB = Counter(fileA), Counter(fileB)
+    str_fileA = [kmer2str(km_bin, k) for km_bin in fileA]
+    str_fileB = [kmer2str(km_bin, k) for km_bin in fileB]
+    dicokmA, dicokmB = Counter(str_fileA), Counter(str_fileB)
 
     #get unique kmers
     outer = set(list(dicokmA.keys()))|set(list(dicokmB.keys()))
@@ -14,11 +17,12 @@ def jaccard(fileA, fileB, k):
     return jac
 
 if __name__ == "__main__":
+    st = time.time()
     print("Computation of Jaccard similarity between files")
 
     # Load all the files in a dictionary
     files = load_directory("data")
-    print({key:len(val) for key,val in files.items()})
+
     k = 21
     filenames = list(files.keys())
 
@@ -33,3 +37,6 @@ if __name__ == "__main__":
 
             jaq = jaccard(fileA, fileB, k)
             print(filenames[i], filenames[j], jaq)
+
+    et = time.time()
+    print(f"Runtime : {(et-st)/60}")
