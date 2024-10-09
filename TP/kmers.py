@@ -15,6 +15,11 @@ def kmer2str(val, k):
     return compute_min("".join(str_val))
 
 def compute_reverse_comp(kmer):
+    """
+    Compute the reverse complement of a nucleotide sequence.
+    :param str kmer: A k-mer of a DNA sequence
+    :return str: returns the reverse complement of the DNA sequence
+    """
     transcriber = {
                 'A':'T',
                 'C':'G',
@@ -27,6 +32,11 @@ def compute_reverse_comp(kmer):
     return new
 
 def compute_min(kmer):
+    """
+    Compute the minimum binary value of a kmer, i.e. the canonical kmer
+    :param str kmer: A k-mer of a DNA sequence
+    :return str: the canonical version of the input k-mer
+    """
     rev = compute_reverse_comp(kmer)
 
     if rev < kmer :
@@ -55,11 +65,11 @@ def stream_kmers(seq, k):
     kmer = encode_kmer(seq, k)
     _km_list = []
     for i in range(k-2, len(seq)-k-1):
-        _km_list.append(kmer2str(kmer, k))
+        _km_list.append(kmer)
         kmer&= mask
         kmer<<= 2
         kmer += encode_nuc(seq[i+k-1])
-        #print("seq : ",seq[i:i+k], kmer, mask, "calc seq : ", kmer2str(kmer, k), sep=" ")
+
     return _km_list
 
 """
