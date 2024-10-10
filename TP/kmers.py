@@ -64,7 +64,7 @@ def stream_kmers(seq, k):
     mask = (1<<(2*(k-1)))-1
     kmer = encode_kmer(seq, k)
     _km_list = []
-    for i in range(k-2, len(seq)-k-1):
+    for i in range(k-(k-1), len(seq)-k-1):
         _km_list.append(kmer)
         kmer&= mask
         kmer<<= 2
